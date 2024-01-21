@@ -88,4 +88,18 @@ public class AmazonStepdefinitions {
     }
 
 
+    @Given("kullanici {string} sayfasına gider")
+    public void kullaniciSayfasınaGider(String istenenUrl) {
+
+        Driver.getDriver().get(ConfigReader.getProperty(istenenUrl));
+
+    }
+
+    @Then("url de {string} oldugunu test eder")
+    public void urlDeOldugunuTestEder(String arananKelime) {
+
+
+        String actualUrl= Driver.getDriver().getCurrentUrl();
+        Assert.assertTrue(actualUrl.contains(arananKelime));
+    }
 }
